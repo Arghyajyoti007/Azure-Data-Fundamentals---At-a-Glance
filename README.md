@@ -89,3 +89,112 @@ Analytical systems store historical data and metrics, optimized for read-heavy w
 - Bronze: raw data.  
 - Silver: cleansed/conformed data.  
 - Gold: aggregated, business-ready data.
+
+## Explore Data Roles and Services
+
+### Job Roles in the World of Data
+- **Database Administrators**  
+  Manage databases, assign permissions, store backups, and restore data in case of failure.
+
+- **Data Engineers**  
+  Manage infrastructure and processes for data integration, apply data cleaning routines, define governance rules, and implement pipelines.
+
+- **Data Analysts**  
+  Explore and analyze data, create visualizations and charts, and enable informed decision-making.
+
+- **AI Engineers**  
+  Build and integrate AI-powered features, work with large language models, ML pipelines, and data sources for intelligent scenarios.
+
+---
+
+### Identify Data Services
+
+#### Azure SQL
+- **Azure SQL Database** – Fully managed PaaS database hosted in Azure.  
+- **Azure SQL Managed Instance** – Hosted SQL Server instance with automated maintenance and flexible configuration.  
+- **Azure SQL VM** – SQL Server installed on a VM, offering maximum configurability with full management responsibility.
+
+#### Open-source Databases in Azure
+- **Azure Database for MySQL** – Commonly used in LAMP stack apps.  
+- **Azure Database for PostgreSQL** – Hybrid relational-object database supporting custom data types.
+
+#### Azure Cosmos DB
+- Global-scale NoSQL database supporting JSON, key-value, column-family, and graph data models.
+
+#### Azure Storage
+- **Blob Containers** – Scalable storage for binary files.  
+- **File Shares** – Network file shares for corporate use.  
+- **Tables** – Key-value storage for fast read/write operations.
+
+#### Azure Data Factory
+- Define and schedule pipelines to transfer and transform data.
+
+#### Microsoft Fabric
+- Unified SaaS analytics platform combining data engineering, warehousing, real-time analytics, data science, and Power BI.  
+- **Fabric IQ** – Unifies data across OneLake with consistent business meaning.
+
+#### Power BI
+- Business intelligence and visualization platform for interactive reports and dashboards.
+
+#### Azure Databricks
+- Cloud analytics platform built on Apache Spark, optimized for large-scale data engineering and lakehouse analytics.
+
+#### Azure Stream Analytics
+- Real-time stream processing engine for querying and transforming input streams.
+
+#### Azure Data Explorer
+- High-performance big data analytics platform for log and telemetry data.
+
+#### Microsoft Purview
+- Enterprise-wide data governance and discoverability with lineage tracking.
+
+#### Microsoft Foundry
+- Unified PaaS for enterprise AI operations, model building, and app development.
+
+---
+
+## Explore Fundamental Relational Data Concepts
+
+### Relational Data
+- **Table** = Core entity  
+- **Row** = Instance  
+- **Column** = Attribute (type enforced: integer, text, date, decimal)  
+- **Null** = Empty value
+
+### Normalization
+- Separate each entity into its own table.  
+- Separate attributes into columns.  
+- Use **Primary Keys (PK)** to uniquely identify rows.  
+- Use **Foreign Keys (FK)** to link related entities.  
+- Composite keys can be defined using multiple columns.
+
+---
+
+### SQL (Structured Query Language)
+
+#### Dialects
+- **T-SQL** – Microsoft SQL Server, Azure SQL Database, Managed Instance, SQL Server on VMs.  
+- **pgSQL** – PostgreSQL dialect.  
+- **PL/SQL** – Oracle’s Procedural Language/SQL.
+
+#### SQL Statement Groups
+- **DDL (Data Definition Language)**  
+  - `CREATE`, `ALTER`, `DROP`, `RENAME`  
+- **DCL (Data Control Language)**  
+  - `GRANT`, `REVOKE`, `DENY`  
+- **DML (Data Manipulation Language)**  
+  - `SELECT`, `INSERT`, `UPDATE`, `DELETE`
+
+---
+
+### Database Objects
+
+#### Views
+Virtual tables based on SELECT queries.  
+```sql
+CREATE VIEW Deliveries AS
+SELECT o.OrderNo, o.OrderDate,
+       c.FirstName, c.LastName, c.Address, c.City
+FROM Order AS o JOIN Customer AS c
+ON o.Customer = c.ID;
+```
