@@ -267,3 +267,55 @@ Microsoft Fabric automatically provisions OneLake, built upon Azure Data Lake St
   - **PartitionKey**: Groups related rows, determines physical partition for scalability and query scoping.
   - **RowKey**: Unique identifier within a partition.
 - Supports rapid point queries and range queries within partitions.
+
+# Explore fundamentals of Azure Cosmos DB
+
+## Describe Azure Cosmos DB
+
+Azure Cosmos DB is a fully managed NoSQL database service on Azure—a platform-as-a-service (PaaS) offering. Microsoft handles all of the underlying infrastructure: server provisioning, patching, updates, and backups. You focus on your application logic while Cosmos DB handles the operational overhead.
+
+Cosmos DB is schema-agnostic. Items stored in the same container don't need to share the same structure. 
+
+Microsoft uses Cosmos DB internally for some of its most demanding services, including Xbox Live, Microsoft 365, and core parts of Azure.
+
+Cosmos DB uses a four-level resource hierarchy to organize your data:
+* **Account**: The top-level Azure resource. A single account can contain unlimited databases.
+* **Database**: A logical namespace that groups related containers together.
+* **Container**: The primary unit of storage and scaling. You configure the partition key, throughput, indexing policy, and an optional time-to-live (TTL) at the container level.
+* **Items**: Individual data entities stored inside a container. Depending on which API you use, items may be called documents, rows, nodes, or edges.
+
+The partition key is a property you choose to distribute data across logical partitions. Each logical partition can hold up to 20 GB of data. 
+
+Cosmos DB automatically creates and maintains indexes on all item properties by default.
+
+Cosmos DB is built for global distribution. Add Azure regions to your account at any time, and the service automatically replicates your data to each one. Multi-region write accounts provide high availability guarantees. At the 99th percentile, reads typically complete in around 4 milliseconds and writes in around 5 milliseconds.
+
+Cosmos DB offers five consistency levels so you can tune that trade-off:
+
+| Consistency Level | Description |
+| :--- | :--- |
+| **Strong** | Every read reflects the most recent write. |
+| **Bounded staleness** | Reads lag behind writes by a configurable interval (time or version count). |
+| **Session** | Consistency is guaranteed within a single client session. This is the most widely used level. |
+| **Consistent prefix** | Reads never see out-of-order writes but may see stale data. |
+| **Eventual** | Replicas converge over time; the weakest guarantee but the highest availability. |
+
+Cosmos DB measures capacity in Request Units per second (RU/s). One RU/s roughly equals the cost of reading a 1-KB item.
+
+Three throughput modes are available:
+
+| Mode | Description |
+| :--- | :--- |
+| **Dedicated** | Throughput is reserved exclusively for a single container. |
+| **Shared** | Throughput is provisioned at the database level and shared across up to 25 containers. |
+| **Serverless** | No throughput to provision upfront; you pay per request. Best for workloads with unpredictable or low traffic. |
+
+The autoscale option lets you set a maximum RU/s, and Cosmos DB adjusts capacity automatically within that range based on actual demand.
+
+Cosmos DB is a strong fit for applications that need flexible schema, global reach, and consistent low latency:
+* **IoT and telemetry**: Fast ingestion of high-frequency device data, available for near-real-time processing.
+* **Gaming**: Player profiles, leaderboards, and in-game stats that require single-digit millisecond response times.
+* **Retail and e-commerce**: Product catalogs, shopping carts, and order pipelines at any scale.
+* **Web and mobile apps**: Personalized user experiences, social features, and third-party integrations.
+
+Some workloads aren't a good fit. If your application depends on complex multi-table joins, Azure SQL Database is better suited. For large-scale historical analytics, consider Microsoft Fabric or Azure Synapse Analytics instead.
