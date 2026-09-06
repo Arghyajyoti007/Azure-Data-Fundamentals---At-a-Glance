@@ -1,4 +1,4 @@
-# Introduction to Microsoft Azure Data core data concepts
+# Introduction to Microsoft Azure Data core data concepts 
 
 ## Explore core data concepts
 
