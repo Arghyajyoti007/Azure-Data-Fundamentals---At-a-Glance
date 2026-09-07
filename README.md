@@ -1,4 +1,4 @@
-# Explore Core Data Concepts
+# Explore Core Data Concepts 
 
 ## Explore Core Data Concepts
 
