@@ -1,3 +1,7 @@
+# Microsoft Certified: Azure Data Fundamentals
+
+<img width="1006" height="687" alt="image" src="https://github.com/user-attachments/assets/eb413dbd-fc95-4c4d-bbed-0b145bb697ff" />
+
 # Explore Core Data Concepts 
 
 ## Explore Core Data Concepts
